@@ -24,41 +24,41 @@ public class CountryReader {
         return pathfile;
     }
 
-    public static List<Country> ReadFromFile(String pathfile) throws IOException {
+    public static List<Country> readFromFile(String pathfile) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(pathfile));
         //String line = bufferedReader.readLine();
         String line;
 
         while ((line = bufferedReader.readLine()) != null) {
-            countriesList.add(CountriesFromLine(line));
+            countriesList.add(countriesFromLine(line));
         }
         return countriesList;
     }
 
 
-    private static Country CountriesFromLine(String line) {
+    private static Country countriesFromLine(String line) {
         String[] token = line.split(Pattern.quote("|"));
-        if (isaBoolean(line)) {
-            return new Country(IdGenerate(), token[0], token[1], Double.parseDouble(token[2]), Double.parseDouble(token[3]),
+        if (isABoolean(line)) {
+            return new Country(idGenerate(), token[0], token[1], Double.parseDouble(token[2]), Double.parseDouble(token[3]),
                     token[4], null);
 
         }
-        return new Country(IdGenerate(), token[0], token[1], Double.parseDouble(token[2]), Double.parseDouble(token[3]),
-                token[4], Neiborough(token[5]));
+        return new Country(idGenerate(), token[0], token[1], Double.parseDouble(token[2]), Double.parseDouble(token[3]),
+                token[4], extractNeighbour(token[5]));
     }
 
     //verific daca ultimul caracter din line este |
-    private static boolean isaBoolean(String line) {
+    private static boolean isABoolean(String line) {
         return line.endsWith("|");
     }
 
-    private static List<String> Neiborough(String s) {
+    private static List<String> extractNeighbour(String s) {
         String[] tokenNeiborough = s.split(Pattern.quote("~"));
         List<String> result = List.of(tokenNeiborough);
         return result;
     }
 
-    private static int IdGenerate() {
+    private static int idGenerate() {
         return countriesList.size() + 1;
     }
 }

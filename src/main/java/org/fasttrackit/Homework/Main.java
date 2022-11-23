@@ -7,7 +7,7 @@ public class Main {
     private static String pathFile = "files/Countries2.txt";
 
     public static void main(String[] args) throws IOException {
-        List<Country> list = CountryReader.ReadFromFile(pathFile);
+        List<Country> list = CountryReader.readFromFile(pathFile);
 
         //list all countries:  -> returns a list of country objects
         System.out.println(CountryService.getList());
