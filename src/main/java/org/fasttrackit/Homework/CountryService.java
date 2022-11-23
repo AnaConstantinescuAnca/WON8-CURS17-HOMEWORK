@@ -1,19 +1,15 @@
 package org.fasttrackit.Homework;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static com.sun.tools.javac.jvm.ByteCodes.pop;
 
 public class CountryService {
     private static String pathFile; //= "files/Countries2.txt";
-    private static List<Countries> countriesList;
+    private static List<Country> countriesList;
 
     //- list all country names :  -> returns a list of strings
     static List<String> allCountriesName = getList().stream()
-            .map(Countries::getName)
+            .map(Country::getName)
             .toList();
 
     //- get capital of a country :  -> returns a string
@@ -35,17 +31,17 @@ public class CountryService {
 
 
     //- get countries in continent : -> returns list of Country objects
-    static List<Countries> getCountriesInContinent = getList().stream()
+    static List<Country> getCountriesInContinent = getList().stream()
             .filter(countries -> countries.getContinent().equals("Asia"))
             .toList();
 
     //- get country neighbours :  -> returns list of Strings
     static List<List<String>> getCountriesNeighbours = getList().stream()
-            .map(Countries::getNeighbour)
+            .map(Country::getNeighbour)
             .toList();
 
     //- get countries in <continent> with population larger than <population> : -> returns list of Country objects
-    static List<Countries> getCountriesWithlLargerPopulation(double population) {
+    static List<Country> getCountriesWithlLargerPopulation(double population) {
         return getList().stream()
                 .filter(countries -> countries.getPopulation() > population)
                 .toList();
@@ -57,7 +53,7 @@ public class CountryService {
     public CountryService() {
     }
 
-    public static List<Countries> getList() {
+    public static List<Country> getList() {
         //CountryReader.getCountriesList();
         return countriesList = CountryReader.getCountriesList();
     }

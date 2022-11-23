@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class CountryReader {
-   private final static List<Countries> countriesList = new ArrayList<>();
+   private final static List<Country> countriesList = new ArrayList<>();
 
     private String pathfile;
 
-    public static List<Countries> getCountriesList() {
+    public static List<Country> getCountriesList() {
         return countriesList;
     }
 
@@ -24,7 +24,7 @@ public class CountryReader {
         return pathfile;
     }
 
-    public static List<Countries> ReadFromFile(String pathfile) throws IOException {
+    public static List<Country> ReadFromFile(String pathfile) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(pathfile));
         //String line = bufferedReader.readLine();
         String line;
@@ -36,14 +36,14 @@ public class CountryReader {
     }
 
 
-    private static Countries CountriesFromLine(String line) {
+    private static Country CountriesFromLine(String line) {
         String[] token = line.split(Pattern.quote("|"));
         if (isaBoolean(line)) {
-            return new Countries(IdGenerate(), token[0], token[1], Double.parseDouble(token[2]), Double.parseDouble(token[3]),
+            return new Country(IdGenerate(), token[0], token[1], Double.parseDouble(token[2]), Double.parseDouble(token[3]),
                     token[4], null);
 
         }
-        return new Countries(IdGenerate(), token[0], token[1], Double.parseDouble(token[2]), Double.parseDouble(token[3]),
+        return new Country(IdGenerate(), token[0], token[1], Double.parseDouble(token[2]), Double.parseDouble(token[3]),
                 token[4], Neiborough(token[5]));
     }
 

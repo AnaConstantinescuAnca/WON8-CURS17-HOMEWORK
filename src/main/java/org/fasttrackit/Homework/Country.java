@@ -2,7 +2,7 @@ package org.fasttrackit.Homework;
 
 import java.util.List;
 
-public class Countries {
+public class Country {
     private int id;
     private String name;
     private String capital;
@@ -12,7 +12,7 @@ public class Countries {
     private List<String> neighbour;
 
 
-    public Countries( int id, String name, String capital, double population, double area, String continent, List<String> neighbour) {
+    public Country(int id, String name, String capital, double population, double area, String continent, List<String> neighbour) {
         this.id = id;
         this.name = name;
         this.capital = capital;
